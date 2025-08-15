@@ -138,11 +138,12 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left Hero Text */}
-          <div className="hidden lg:flex flex-col items-center justify-between h-full py-16">
+          <div className="lg:flex flex-col items-center justify-around h-full py-16">
             <div>
               <div className="hero-text text-center">
                 HELP DE
@@ -206,7 +207,7 @@ const ContactPage = () => {
           </div>
 
           {/* Right Hero Text */}
-          <div className="hidden lg:flex flex-col items-center justify-between h-full py-16">
+          <div className="hidden lg:flex flex-col items-center justify-around h-full py-16">
             <div>
               <div className="hero-text text-center">
                 HELP DE
@@ -221,18 +222,70 @@ const ContactPage = () => {
           </div>
         </div>
 
-        {/* Mobile Hero Text */}
-        <div className="lg:hidden text-center mb-8">
+        {/* Mobile Layout */}
+        <div className="lg:hidden flex flex-col items-center text-center">
           <div className="hero-text">
             HELP DE ZWANZER
           </div>
+          
+          <div className="flex justify-center w-full my-8">
+            <div
+              className="video-container w-full max-w-[22rem] aspect-[9/16] relative cursor-pointer"
+              onClick={handleVideoClick}
+            >
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                playsInline
+              >
+                <source src="/help-zwanzer.mp4" type="video/mp4" />
+                {/* Fallback for when video is not available */}
+                <img
+                  src="/lovable-uploads/b22b275d-d619-4ba2-aad9-b68e3fd17c05.png"
+                  alt="Help De Zwanzer"
+                  className="w-full h-full object-cover"
+                />
+              </video>
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25 pointer-events-none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-24 h-24 text-white opacity-80"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.647c1.295.748 1.295 2.538 0 3.286L7.279 20.99c-1.25.72-2.779-.217-2.779-1.643V5.653z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              )}
+              {isPlaying && (
+                <div 
+                  className="progress-bar-container absolute bottom-4 left-4 right-4 h-2 bg-white bg-opacity-25 rounded-full cursor-pointer"
+                  onClick={handleProgressSeek}
+                >
+                  <div 
+                    className="progress-bar h-full bg-white rounded-full" 
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="hero-arrow">
+            ↓
+          </div>
         </div>
-
+        
         {/* Contact Form */}
         <div className="mt-16 flex justify-center" ref={formRef}>
           <Card className="contact-form w-full max-w-2xl">
-            <h2 className="text-3xl font-bold text-card-foreground mb-6 text-center">
-              Kan jij mij helpen om iets megazot/uniek/graaf/grappig te doen?<br />Laat het mij hieronder weten!
+            <h2 className="text-xl lg:text-3xl font-bold text-card-foreground mb-6 text-center">
+              Kan jij mij helpen om iets megazot/uniek/graaf/grappig te doen? Laat het mij hieronder weten!
             </h2>
             <ContactForm />
           </Card>
