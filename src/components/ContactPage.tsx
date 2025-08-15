@@ -174,7 +174,7 @@ const ContactPage = () => {
                 <source src="/help-zwanzer.webm" type="video/webm" />
                 {/* Fallback for when video is not available */}
                 <img
-                  src=""
+                  src="" 
                   alt="Help De Zwanzer"
                   className="w-full h-full object-cover"
                 />
