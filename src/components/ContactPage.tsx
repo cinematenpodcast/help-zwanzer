@@ -83,59 +83,75 @@ function ContactForm() {
 const ContactPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
+  const getActiveVideo = () => {
+    const mobileVideo = mobileVideoRef.current;
+    if (mobileVideo && mobileVideo.offsetParent !== null) {
+      return mobileVideo;
+    }
+    return desktopVideoRef.current;
+  };
+
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const desktopVideo = desktopVideoRef.current;
+    const mobileVideo = mobileVideoRef.current;
 
     const handleVideoEnd = () => {
-      formRef.current?.scrollIntoView({ behavior: 'smooth' });
+      formRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    const handleTimeUpdate = () => {
+    const handleTimeUpdate = (event: Event) => {
+      const video = event.target as HTMLVideoElement;
       if (video.duration) {
         setProgress((video.currentTime / video.duration) * 100);
       }
     };
 
-    video.addEventListener('ended', handleVideoEnd);
-    video.addEventListener('timeupdate', handleTimeUpdate);
+    desktopVideo?.addEventListener("ended", handleVideoEnd);
+    desktopVideo?.addEventListener("timeupdate", handleTimeUpdate);
+    mobileVideo?.addEventListener("ended", handleVideoEnd);
+    mobileVideo?.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
-      video.removeEventListener('ended', handleVideoEnd);
-      video.removeEventListener('timeupdate', handleTimeUpdate);
+      desktopVideo?.removeEventListener("ended", handleVideoEnd);
+      desktopVideo?.removeEventListener("timeupdate", handleTimeUpdate);
+      mobileVideo?.removeEventListener("ended", handleVideoEnd);
+      mobileVideo?.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, []);
 
   const handleVideoClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Prevent toggling play/pause when clicking on the progress bar
-    if ((e.target as HTMLElement).closest('.progress-bar-container')) {
+    if ((e.target as HTMLElement).closest(".progress-bar-container")) {
       return;
     }
 
-    if (videoRef.current) {
+    const video = getActiveVideo();
+    if (video) {
       if (isPlaying) {
-        videoRef.current.pause();
+        video.pause();
       } else {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play();
-        videoRef.current.muted = false;
+        video.currentTime = 0;
+        video.play();
+        video.muted = false;
       }
       setIsPlaying(!isPlaying);
     }
   };
 
   const handleProgressSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const video = getActiveVideo();
+    if (!video) return;
+
     const progressBar = e.currentTarget;
     const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
     const progressBarWidth = progressBar.offsetWidth;
-    const seekTime = (clickPosition / progressBarWidth) * (videoRef.current?.duration || 0);
-    
-    if (videoRef.current) {
-      videoRef.current.currentTime = seekTime;
-    }
+    const seekTime = (clickPosition / progressBarWidth) * (video.duration || 0);
+
+    video.currentTime = seekTime;
   };
 
   return (
@@ -146,16 +162,10 @@ const ContactPage = () => {
           {/* Left Hero Text */}
           <div className="lg:flex flex-col items-center justify-around h-full py-16">
             <div>
-              <div className="hero-text text-center">
-                HELP DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+              <div className="hero-text text-center">HELP DE</div>
+              <div className="hero-text text-center -mt-4">ZWANZER</div>
             </div>
-            <div className="hero-arrow">
-              ↓
-            </div>
+            <div className="hero-arrow">↓</div>
           </div>
 
           {/* Center Video */}
@@ -165,7 +175,7 @@ const ContactPage = () => {
               onClick={handleVideoClick}
             >
               <video
-                ref={videoRef}
+                ref={desktopVideoRef}
                 className="w-full h-full object-cover"
                 muted
                 playsInline
@@ -195,12 +205,12 @@ const ContactPage = () => {
                 </div>
               )}
               {isPlaying && (
-                <div 
+                <div
                   className="progress-bar-container absolute bottom-4 left-4 right-4 h-2 bg-white bg-opacity-25 rounded-full cursor-pointer"
                   onClick={handleProgressSeek}
                 >
-                  <div 
-                    className="progress-bar h-full bg-white rounded-full" 
+                  <div
+                    className="progress-bar h-full bg-white rounded-full"
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>
@@ -211,16 +221,10 @@ const ContactPage = () => {
           {/* Right Hero Text */}
           <div className="hidden lg:flex flex-col items-center justify-around h-full py-16">
             <div>
-              <div className="hero-text text-center">
-                HELP DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+              <div className="hero-text text-center">HELP DE</div>
+              <div className="hero-text text-center -mt-4">ZWANZER</div>
             </div>
-            <div className="hero-arrow">
-              ↓
-            </div>
+            <div className="hero-arrow">↓</div>
           </div>
         </div>
 
@@ -234,7 +238,7 @@ const ContactPage = () => {
               onClick={handleVideoClick}
             >
               <video
-                ref={videoRef}
+                ref={mobileVideoRef}
                 className="w-full h-full object-cover"
                 muted
                 playsInline
