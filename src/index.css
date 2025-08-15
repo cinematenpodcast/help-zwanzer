@@ -8,35 +8,42 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 195 78% 39%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 174 100% 80%;
+    --card-foreground: 195 100% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 174 100% 80%;
+    --popover-foreground: 195 100% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 174 100% 50%;
+    --primary-foreground: 195 100% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 174 100% 80%;
+    --secondary-foreground: 195 100% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 174 50% 70%;
+    --muted-foreground: 195 50% 25%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 14 100% 57%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 174 30% 60%;
+    --input: 0 0% 100%;
+    --ring: 174 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+    
+    /* Custom design tokens */
+    --hero-text: 174 100% 50%;
+    --hero-shadow: 174 100% 30%;
+    --form-bg: 174 100% 80%;
+    --button-bg: 14 100% 57%;
+    --gradient-bg: linear-gradient(135deg, hsl(195, 78%, 39%), hsl(195, 78%, 49%));
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +108,33 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .hero-text {
+    @apply text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter;
+    color: hsl(var(--hero-text));
+    text-shadow: 
+      4px 4px 0px hsl(var(--hero-shadow)),
+      8px 8px 0px hsl(var(--hero-shadow) / 0.8),
+      12px 12px 0px hsl(var(--hero-shadow) / 0.6),
+      16px 16px 0px hsl(var(--hero-shadow) / 0.4);
+    transform: rotateX(15deg) rotateY(-15deg);
+    transform-style: preserve-3d;
+  }
+  
+  .video-container {
+    @apply relative rounded-3xl overflow-hidden;
+    transform: perspective(1000px) rotateY(0deg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .contact-form {
+    background: hsl(var(--form-bg));
+    @apply rounded-3xl p-8 shadow-2xl backdrop-blur-sm;
+    border: 2px solid hsl(var(--primary) / 0.3);
   }
 }
