@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 174 50% 70%;
     --muted-foreground: 195 50% 25%;
 
-    --accent: 14 100% 57%;
+    --accent: 174 100% 25%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -40,10 +40,10 @@ All colors MUST be HSL.
     
     /* Custom design tokens */
     --hero-text: 174 100% 50%;
-    --hero-shadow: 174 100% 30%;
+    --hero-shadow: 174 100% 25%;
     --form-bg: 174 100% 80%;
     --button-bg: 14 100% 57%;
-    --gradient-bg: linear-gradient(135deg, hsl(195, 78%, 25%), hsl(174, 100%, 60%), hsl(195, 78%, 55%));
+    --gradient-bg: linear-gradient(135deg, hsl(195, 78%, 15%), hsl(174, 100%, 30%), hsl(195, 78%, 25%));
 
     --sidebar-background: 0 0% 98%;
 
@@ -115,15 +115,34 @@ All colors MUST be HSL.
 
 @layer components {
   .hero-text {
-    @apply text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter;
+    @apply text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter;
     color: hsl(var(--hero-text));
     text-shadow: 
+      1px 1px 0px hsl(var(--hero-shadow)),
+      2px 2px 0px hsl(var(--hero-shadow)),
+      3px 3px 0px hsl(var(--hero-shadow)),
       4px 4px 0px hsl(var(--hero-shadow)),
-      8px 8px 0px hsl(var(--hero-shadow) / 0.8),
-      12px 12px 0px hsl(var(--hero-shadow) / 0.6),
-      16px 16px 0px hsl(var(--hero-shadow) / 0.4);
+      5px 5px 0px hsl(var(--hero-shadow)),
+      6px 6px 0px hsl(var(--hero-shadow)),
+      7px 7px 0px hsl(var(--hero-shadow)),
+      8px 8px 0px hsl(var(--hero-shadow));
     transform: rotateX(15deg) rotateY(-15deg);
     transform-style: preserve-3d;
+  }
+  
+  .hero-arrow {
+    @apply text-8xl font-black;
+    color: hsl(var(--hero-text));
+    text-shadow:
+      1px 1px 0px hsl(var(--hero-shadow)),
+      2px 2px 0px hsl(var(--hero-shadow)),
+      3px 3px 0px hsl(var(--hero-shadow)),
+      4px 4px 0px hsl(var(--hero-shadow)),
+      5px 5px 0px hsl(var(--hero-shadow)),
+      6px 6px 0px hsl(var(--hero-shadow)),
+      7px 7px 0px hsl(var(--hero-shadow)),
+      8px 8px 0px hsl(var(--hero-shadow));
+    animation: bounce 2s infinite;
   }
   
   .video-container {
@@ -136,5 +155,20 @@ All colors MUST be HSL.
     background: hsl(var(--form-bg));
     @apply rounded-3xl p-8 shadow-2xl backdrop-blur-sm;
     border: 2px solid hsl(var(--primary) / 0.3);
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
   }
 }
