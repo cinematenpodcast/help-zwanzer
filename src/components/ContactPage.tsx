@@ -174,7 +174,7 @@ const ContactPage = () => {
                 <source src="/help-zwanzer.webm" type="video/webm" />
                 {/* Fallback for when video is not available */}
                 <img
-                  src="" 
+                  src=""
                   alt="Help De Zwanzer"
                   className="w-full h-full object-cover"
                 />
@@ -227,10 +227,8 @@ const ContactPage = () => {
 
         {/* Mobile Layout */}
         <div className="lg:hidden flex flex-col items-center text-center">
-          <div className="hero-text">
-            HELP DE ZWANZER
-          </div>
-          
+          <div className="hero-text">HELP DE ZWANZER</div>
+
           <div className="flex justify-center w-full my-8">
             <div
               className="video-container w-full max-w-[22rem] aspect-[9/16] relative cursor-pointer"
@@ -247,7 +245,7 @@ const ContactPage = () => {
                 <source src="/help-zwanzer.webm" type="video/webm" />
                 {/* Fallback for when video is not available */}
                 <img
-                  src="/lovable-uploads/b22b275d-d619-4ba2-aad9-b68e3fd17c05.png"
+                  src=""
                   alt="Help De Zwanzer"
                   className="w-full h-full object-cover"
                 />
