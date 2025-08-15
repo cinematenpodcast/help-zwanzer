@@ -43,7 +43,7 @@ All colors MUST be HSL.
     --hero-shadow: 174 100% 30%;
     --form-bg: 174 100% 80%;
     --button-bg: 14 100% 57%;
-    --gradient-bg: linear-gradient(135deg, hsl(195, 78%, 39%), hsl(195, 78%, 49%));
+    --gradient-bg: linear-gradient(135deg, hsl(195, 78%, 25%), hsl(174, 100%, 60%), hsl(195, 78%, 55%));
 
     --sidebar-background: 0 0% 98%;
 

@@ -10,15 +10,28 @@ const ContactPage = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left Hero Text */}
-          <div className="hidden lg:flex flex-col items-center justify-center">
-            <div className="hero-text text-center">
-              HELP
+          <div className="hidden lg:flex flex-col items-center justify-center space-y-8">
+            <div>
+              <div className="hero-text text-center">
+                HELP
+              </div>
+              <div className="hero-text text-center -mt-4">
+                DE
+              </div>
+              <div className="hero-text text-center -mt-4">
+                ZWANZER
+              </div>
             </div>
-            <div className="hero-text text-center -mt-4">
-              DE
-            </div>
-            <div className="hero-text text-center -mt-4">
-              ZWANZER
+            <div>
+              <div className="hero-text text-center">
+                HELP
+              </div>
+              <div className="hero-text text-center -mt-4">
+                DE
+              </div>
+              <div className="hero-text text-center -mt-4">
+                ZWANZER
+              </div>
             </div>
           </div>
 
@@ -44,15 +57,28 @@ const ContactPage = () => {
           </div>
 
           {/* Right Hero Text */}
-          <div className="hidden lg:flex flex-col items-center justify-center">
-            <div className="hero-text text-center">
-              HELP
+          <div className="hidden lg:flex flex-col items-center justify-center space-y-8">
+            <div>
+              <div className="hero-text text-center">
+                HELP
+              </div>
+              <div className="hero-text text-center -mt-4">
+                DE
+              </div>
+              <div className="hero-text text-center -mt-4">
+                ZWANZER
+              </div>
             </div>
-            <div className="hero-text text-center -mt-4">
-              DE
-            </div>
-            <div className="hero-text text-center -mt-4">
-              ZWANZER
+            <div>
+              <div className="hero-text text-center">
+                HELP
+              </div>
+              <div className="hero-text text-center -mt-4">
+                DE
+              </div>
+              <div className="hero-text text-center -mt-4">
+                ZWANZER
+              </div>
             </div>
           </div>
         </div>
