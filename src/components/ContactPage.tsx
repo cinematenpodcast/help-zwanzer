@@ -8,35 +8,22 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-center min-h-[60vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left Hero Text */}
-          <div className="hidden lg:flex lg:col-span-2 flex-col items-center justify-center space-y-8">
-            <div>
-              <div className="hero-text text-center">
-                HELP
-              </div>
-              <div className="hero-text text-center -mt-4">
-                DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+          <div className="hidden lg:flex flex-col items-center justify-center">
+            <div className="hero-text text-center">
+              HELP
             </div>
-            <div>
-              <div className="hero-text text-center">
-                HELP
-              </div>
-              <div className="hero-text text-center -mt-4">
-                DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+            <div className="hero-text text-center -mt-4">
+              DE
+            </div>
+            <div className="hero-text text-center -mt-4">
+              ZWANZER
             </div>
           </div>
 
           {/* Center Video */}
-          <div className="lg:col-span-1 flex justify-center">
+          <div className="flex justify-center">
             <div className="video-container w-full max-w-sm aspect-[9/16]">
               <video 
                 className="w-full h-full object-cover"
@@ -57,28 +44,15 @@ const ContactPage = () => {
           </div>
 
           {/* Right Hero Text */}
-          <div className="hidden lg:flex lg:col-span-2 flex-col items-center justify-center space-y-8">
-            <div>
-              <div className="hero-text text-center">
-                HELP
-              </div>
-              <div className="hero-text text-center -mt-4">
-                DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+          <div className="hidden lg:flex flex-col items-center justify-center">
+            <div className="hero-text text-center">
+              HELP
             </div>
-            <div>
-              <div className="hero-text text-center">
-                HELP
-              </div>
-              <div className="hero-text text-center -mt-4">
-                DE
-              </div>
-              <div className="hero-text text-center -mt-4">
-                ZWANZER
-              </div>
+            <div className="hero-text text-center -mt-4">
+              DE
+            </div>
+            <div className="hero-text text-center -mt-4">
+              ZWANZER
             </div>
           </div>
         </div>
