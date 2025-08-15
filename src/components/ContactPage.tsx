@@ -119,6 +119,7 @@ const ContactPage = () => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
+        videoRef.current.currentTime = 0;
         videoRef.current.play();
         videoRef.current.muted = false;
       }
@@ -166,8 +167,6 @@ const ContactPage = () => {
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
-                autoPlay
-                loop
                 muted
                 playsInline
               >
@@ -237,8 +236,6 @@ const ContactPage = () => {
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
-                autoPlay
-                loop
                 muted
                 playsInline
               >
