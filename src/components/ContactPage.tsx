@@ -166,9 +166,12 @@ const ContactPage = () => {
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
                 playsInline
               >
-                <source src="/help-zwanzer.mp4" type="video/mp4" />
+                <source src="/help-zwanzer.webm" type="video/webm" />
                 {/* Fallback for when video is not available */}
                 <img
                   src="/lovable-uploads/b22b275d-d619-4ba2-aad9-b68e3fd17c05.png"
@@ -236,9 +239,12 @@ const ContactPage = () => {
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
                 playsInline
               >
-                <source src="/help-zwanzer.mp4" type="video/mp4" />
+                <source src="/help-zwanzer.webm" type="video/webm" />
                 {/* Fallback for when video is not available */}
                 <img
                   src="/lovable-uploads/b22b275d-d619-4ba2-aad9-b68e3fd17c05.png"
