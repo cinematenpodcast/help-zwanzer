@@ -101,6 +101,7 @@ const ContactPage = () => {
 
     const handleVideoEnd = () => {
       formRef.current?.scrollIntoView({ behavior: "smooth" });
+      setIsPlaying(false);
     };
 
     const handleTimeUpdate = (event: Event) => {
@@ -134,7 +135,9 @@ const ContactPage = () => {
       if (isPlaying) {
         video.pause();
       } else {
-        video.currentTime = 0;
+        if (video.ended) {
+          video.currentTime = 0;
+        }
         video.play();
         video.muted = false;
       }
