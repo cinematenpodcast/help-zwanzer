@@ -295,6 +295,11 @@ const ContactPage = () => {
             <ContactForm />
           </Card>
         </div>
+        <div className="mt-8 text-center">
+          <a href="https://wabliefteru.be" target="_blank" rel="noopener noreferrer">
+            <img src="/wabliefteru.png" alt="Wabliefteru Logo" className="mx-auto" style={{ maxWidth: '200px' }} />
+          </a>
+        </div>
       </div>
     </div>
   );
